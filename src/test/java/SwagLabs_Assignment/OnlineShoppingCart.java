@@ -89,10 +89,11 @@ public class OnlineShoppingCart {
 
         //Checkout
         checkoutButtonClick();
-        Thread.sleep(3000);
+        Thread.sleep(2000);
 
         //Fill checkout information
         completeCheckoutInfo();
+        Thread.sleep(2000);
         System.out.println("------------ TC 004 finished ------------" + '\n');
 
     }
@@ -106,15 +107,15 @@ public class OnlineShoppingCart {
 
         //Validate details
         validateDataBeforeFinish();
-        Thread.sleep(3000);
+        Thread.sleep(2000);
 
         //Finish data validation
         finishButtonClick();
-        Thread.sleep(3000);
+        Thread.sleep(2000);
 
         //Back to home page
         backToHomeButtonClick();
-        Thread.sleep(3000);
+        Thread.sleep(2000);
         System.out.println("------------ TC 005 finished ------------" + '\n');
     }
 
@@ -239,7 +240,7 @@ public class OnlineShoppingCart {
         //Click continue button
         driver.findElement(By.name("continue")).click();
         System.out.println("Error: Last Name is required");
-        Thread.sleep(3000);
+        Thread.sleep(2000);
 
         //------VALIDATE CHECKOUT INFO ONLY FILLING FIRST NAME, LAST NAME--------
         //Get element name for LastName and send values
@@ -247,7 +248,7 @@ public class OnlineShoppingCart {
         //Click continue button
         driver.findElement(By.name("continue")).click();
         System.out.println("Error: Postal Code is required");
-        Thread.sleep(3000);
+        Thread.sleep(2000);
 
         //------VALIDATE CHECKOUT INFO FILLING ALL FIELDS--------
         //Get element name for zipCode and send values
@@ -255,7 +256,7 @@ public class OnlineShoppingCart {
         //Click continue button
         driver.findElement(By.name("continue")).click();
         System.out.println("Checkout information entered successfully");
-        Thread.sleep(3000);
+        Thread.sleep(2000);
 
         //Verify that navigate to Checkout: Overview page
         expectedText = "Checkout: Overview";
@@ -266,6 +267,7 @@ public class OnlineShoppingCart {
         } else {
             System.out.println("Unsuccessful page navigation");
         }
+        Thread.sleep(2000);
     }
 
     public void validateDataBeforeFinish() throws InterruptedException {
@@ -279,31 +281,16 @@ public class OnlineShoppingCart {
         } else {
             System.out.println("Incorrect item count displayed");
         }
-        Thread.sleep(3000);
-
-//        //Check the currency method
-//        expectedText = "$";
-//        actualText = driver.findElement(By.xpath("//*[@id=\"checkout_summary_container\"]/div/div[1]/div[3]/div[2]/div[2]/div/text()[1]")).getText();
-//
-//        if (expectedText.equals(actualText)) {
-//            System.out.println("Item currency method display successful");
-//        } else {
-//            System.out.println("Incorrect currency method display");
-//        }
-//        Thread.sleep(3000);
+        Thread.sleep(2000);
 
         //Check the currency element
-        // Locate the price element (modify the selector as needed)
         WebElement priceElement = driver.findElement(By.xpath("//*[@id=\"checkout_summary_container\"]/div/div[1]/div[3]/div[2]/div[2]/div"));
-
         // Get the text of the price element
         String priceText = priceElement.getText();
-
         // Verify that the price contains a dollar sign
         Assert.assertTrue(priceText.contains("$"), "Price does not contain a dollar sign: " + priceText);
-
         System.out.println("Price contains a dollar($) sign.");
-        Thread.sleep(3000);
+        Thread.sleep(2000);
 
         //Check the payment information
         expectedText = "SauceCard #31337";
@@ -314,7 +301,7 @@ public class OnlineShoppingCart {
         } else {
             System.out.println("Incorrect Payment Information displayed");
         }
-        Thread.sleep(3000);
+        Thread.sleep(2000);
 
         //Check the Shipping information
         expectedText = "Free Pony Express Delivery!";
@@ -325,11 +312,17 @@ public class OnlineShoppingCart {
         } else {
             System.out.println("Incorrect Shipping information displayed");
         }
-        Thread.sleep(3000);
+        Thread.sleep(2000);
 
+        //--------------------------------------------------------------------------------------------------------------
         //Verify total amount calculation
-        System.out.println("Implement : Check the total amount is correct or not");
+        System.out.println("Implement total calculation");
 
+
+
+
+
+        //--------------------------------------------------------------------------------------------------------------
 
     }
 
@@ -363,7 +356,6 @@ public class OnlineShoppingCart {
     public void backToHomeButtonClick() throws InterruptedException {
         //click the back to home button
         driver.findElement(By.xpath(" //*[@id=\"back-to-products\"]")).click();
-        Thread.sleep(5000);
 
         //Verify direct back to product page
         expectedText = "Products";
