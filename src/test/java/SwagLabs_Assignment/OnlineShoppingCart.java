@@ -27,7 +27,7 @@ public class OnlineShoppingCart {
 
     //-----------Test case section
 
-    //Test case - Add item to cart (TC: 001)
+    //Test case - Login to swag labs (TC: 001)
     @Test(priority = 1)
     public void landingToProductPage() throws Exception {
         System.out.println("--------------------------------");
@@ -54,7 +54,6 @@ public class OnlineShoppingCart {
         System.out.println("------------ TC 001 finished ------------" + '\n');
     }
 
-
     //Test case - Add item to cart and remove the added item (TC: 002)
     @Test(priority = 2)
     public void addItem_RemoveItem() throws Exception {
@@ -68,6 +67,7 @@ public class OnlineShoppingCart {
 
     }
 
+    //Test case - View shopping cart (TC: 003)
     @Test(priority = 3)
     public void viewTheCart() throws Exception {
         System.out.println("--------------------------------");
@@ -78,6 +78,34 @@ public class OnlineShoppingCart {
         shoppingCartClick();
         System.out.println("------------ TC 003 finished ------------" + '\n');
 
+    }
+
+    //Test case - Complete checkout process (TC: 004)
+    @Test(priority = 4)
+    public void completeCheckout() throws Exception {
+        System.out.println("--------------------------------");
+        System.out.println("             TC 004             ");
+        System.out.println("--------------------------------");
+
+        //Checkout
+        checkoutButtonClick();
+        Thread.sleep(3000);
+
+        //Fill checkout information
+        completeCheckoutInfo();
+        System.out.println("------------ TC 004 finished ------------" + '\n');
+
+    }
+
+    //Test case - Validate order details (TC: 005)
+    @Test(priority = 5)
+    public void validateOrderDetails() throws Exception{
+        System.out.println("--------------------------------");
+        System.out.println("             TC 005             ");
+        System.out.println("--------------------------------");
+
+        //Validate details
+        validateDataBeforeFinish();
     }
 
 
@@ -156,7 +184,7 @@ public class OnlineShoppingCart {
         actualText = driver.findElement(By.xpath("//*[@id=\"header_container\"]/div[2]/span")).getText();
 
         if (expectedText.equals(actualText)) {
-            System.out.println("Verified the customer is in the " + expectedText +" Page");
+            System.out.println("Verified the customer is in the " + expectedText + " Page");
         } else {
             System.out.println("Unsuccessful page navigation");
         }
@@ -182,22 +210,22 @@ public class OnlineShoppingCart {
         // Verify that the price contains a dollar sign
         Assert.assertTrue(priceText.contains("$"), "Price does not contain a dollar sign: " + priceText);
 
-        System.out.println("Price contains a dollar sign.");
+        System.out.println("Price contains a dollar($) sign.");
         Thread.sleep(3000);
     }
 
     public void checkoutButtonClick() throws InterruptedException {
 
-        //click the reset button
+        //click the checkout button
         driver.findElement(By.xpath("//*[@id=\"checkout\"]")).click();
-        Thread.sleep(5000);
+        Thread.sleep(3000);
 
         //Verify that navigate to Checkout: Your Information page
         expectedText = "Checkout: Your Information";
         actualText = driver.findElement(By.xpath("//*[@id=\"header_container\"]/div[2]/span")).getText();
 
         if (expectedText.equals(actualText)) {
-            System.out.println("Customer is in the Checkout: Your Information page successful");
+            System.out.println("Verified the customer is in the " + expectedText + " Page");
         } else {
             System.out.println("Unsuccessful page navigation");
         }
@@ -234,7 +262,7 @@ public class OnlineShoppingCart {
         actualText = driver.findElement(By.xpath("//*[@id=\"header_container\"]/div[2]/span")).getText();
 
         if (expectedText.equals(actualText)) {
-            System.out.println("Customer is in the Checkout: Overview page successful");
+            System.out.println("Verified the customer is in the " + expectedText + " Page");
         } else {
             System.out.println("Unsuccessful page navigation");
         }
@@ -247,21 +275,34 @@ public class OnlineShoppingCart {
         actualText = driver.findElement(By.xpath("//*[@id=\"checkout_summary_container\"]/div/div[1]/div[3]/div[1]")).getText();
 
         if (expectedText.equals(actualText)) {
-            System.out.println("Item count selection successful");
+            System.out.println("Item count displayed successfully");
         } else {
-            System.out.println("Item count selection unsuccessful");
+            System.out.println("Incorrect item count displayed");
         }
         Thread.sleep(3000);
 
-        //Check the currency method
-        expectedText = "$";
-        actualText = driver.findElement(By.xpath("//*[@id=\"checkout_summary_container\"]/div/div[1]/div[3]/div[2]/div[2]/div/text()[1]")).getText();
+//        //Check the currency method
+//        expectedText = "$";
+//        actualText = driver.findElement(By.xpath("//*[@id=\"checkout_summary_container\"]/div/div[1]/div[3]/div[2]/div[2]/div/text()[1]")).getText();
+//
+//        if (expectedText.equals(actualText)) {
+//            System.out.println("Item currency method display successful");
+//        } else {
+//            System.out.println("Incorrect currency method display");
+//        }
+//        Thread.sleep(3000);
 
-        if (expectedText.equals(actualText)) {
-            System.out.println("Item currency method display successful");
-        } else {
-            System.out.println("Incorrect currency method display");
-        }
+        //Check the currency element
+        // Locate the price element (modify the selector as needed)
+        WebElement priceElement = driver.findElement(By.xpath("//*[@id=\"checkout_summary_container\"]/div/div[1]/div[3]/div[2]/div[2]/div"));
+
+        // Get the text of the price element
+        String priceText = priceElement.getText();
+
+        // Verify that the price contains a dollar sign
+        Assert.assertTrue(priceText.contains("$"), "Price does not contain a dollar sign: " + priceText);
+
+        System.out.println("Price contains a dollar($) sign.");
         Thread.sleep(3000);
 
         //Check the payment information
@@ -269,9 +310,9 @@ public class OnlineShoppingCart {
         actualText = driver.findElement(By.xpath("//*[@id=\"checkout_summary_container\"]/div/div[2]/div[2]")).getText();
 
         if (expectedText.equals(actualText)) {
-            System.out.println("Payment Information display successful");
+            System.out.println("Payment Information displayed successfully");
         } else {
-            System.out.println("Incorrect Payment Information display");
+            System.out.println("Incorrect Payment Information displayed");
         }
         Thread.sleep(3000);
 
@@ -280,9 +321,9 @@ public class OnlineShoppingCart {
         actualText = driver.findElement(By.xpath("//*[@id=\"checkout_summary_container\"]/div/div[2]/div[4]")).getText();
 
         if (expectedText.equals(actualText)) {
-            System.out.println("Shipping information display successful");
+            System.out.println("Shipping information displayed successfully");
         } else {
-            System.out.println("Incorrect Shipping information display");
+            System.out.println("Incorrect Shipping information displayed");
         }
         Thread.sleep(3000);
 
@@ -317,6 +358,7 @@ public class OnlineShoppingCart {
         } else {
             System.out.println("Customer order is unsuccessful");
         }
+        System.out.println("------------ TC 005 finished ------------" + '\n');
     }
 
     public void backToHomeButtonClick() throws InterruptedException {
