@@ -99,13 +99,23 @@ public class OnlineShoppingCart {
 
     //Test case - Validate order details (TC: 005)
     @Test(priority = 5)
-    public void validateOrderDetails() throws Exception{
+    public void validateOrderDetails() throws Exception {
         System.out.println("--------------------------------");
         System.out.println("             TC 005             ");
         System.out.println("--------------------------------");
 
         //Validate details
         validateDataBeforeFinish();
+        Thread.sleep(3000);
+
+        //Finish data validation
+        finishButtonClick();
+        Thread.sleep(3000);
+
+        //Back to home page
+        backToHomeButtonClick();
+        Thread.sleep(3000);
+        System.out.println("------------ TC 005 finished ------------" + '\n');
     }
 
 
@@ -143,16 +153,6 @@ public class OnlineShoppingCart {
         //Close the menu item
         driver.findElement(By.xpath("//*[@id=\"react-burger-cross-btn\"]")).click();
         Thread.sleep(2000);
-
-//        //Verify the landing page is product page
-//        expectedText = "Products";
-//        actualText = driver.findElement(By.xpath("//*[@id=\"header_container\"]/div[2]/span")).getText();
-//
-//        if (expectedText.equals(actualText)) {
-//            System.out.println("Customer is in the Product page successfully");
-//        } else {
-//            System.out.println("Unsuccessful landing page");
-//        }
     }
 
     public void addToCart_RemoveClick() throws InterruptedException {
@@ -358,7 +358,6 @@ public class OnlineShoppingCart {
         } else {
             System.out.println("Customer order is unsuccessful");
         }
-        System.out.println("------------ TC 005 finished ------------" + '\n');
     }
 
     public void backToHomeButtonClick() throws InterruptedException {

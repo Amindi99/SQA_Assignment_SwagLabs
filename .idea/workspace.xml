@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c6be5db7-3d43-4b43-adae-8dd87438748c" name="Changes" comment="Upto test case 3 done">
+    <list default="true" id="c6be5db7-3d43-4b43-adae-8dd87438748c" name="Changes" comment="Upto test case 5 done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/SwagLabs_Assignment/OnlineShoppingCart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SwagLabs_Assignment/OnlineShoppingCart.java" afterDir="false" />
     </list>
@@ -101,7 +101,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719054796887</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Upto test case 5 done">
+      <option name="closed" value="true" />
+      <created>1719060449455</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1719060449455</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -122,7 +130,8 @@
     <MESSAGE value="Supportive methods implemented" />
     <MESSAGE value="Upto test case 2 done" />
     <MESSAGE value="Upto test case 3 done" />
-    <option name="LAST_COMMIT_MESSAGE" value="Upto test case 3 done" />
+    <MESSAGE value="Upto test case 5 done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Upto test case 5 done" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
