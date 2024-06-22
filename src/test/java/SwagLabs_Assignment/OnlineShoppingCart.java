@@ -2,7 +2,9 @@ package SwagLabs_Assignment;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -30,7 +32,7 @@ public class OnlineShoppingCart {
     public void landingToProductPage() throws Exception {
         System.out.println("--------------------------------");
         System.out.println("             TC 001             ");
-        System.out.println("--------------------------------" + '\n');
+        System.out.println("--------------------------------");
 
         //Login to the system
         customerLogin();
@@ -56,18 +58,26 @@ public class OnlineShoppingCart {
     //Test case - Add item to cart and remove the added item (TC: 002)
     @Test(priority = 2)
     public void addItem_RemoveItem() throws Exception {
-        System.out.println("------------ TC 002 ------------" + '\n');
+        System.out.println("--------------------------------");
+        System.out.println("             TC 002             ");
+        System.out.println("--------------------------------");
 
         //Add item to cart and remove the added item
         addToCart_RemoveClick();
+        System.out.println("------------ TC 002 finished ------------" + '\n');
 
     }
 
     @Test(priority = 3)
     public void viewTheCart() throws Exception {
+        System.out.println("--------------------------------");
+        System.out.println("             TC 003             ");
+        System.out.println("--------------------------------");
 
         //View the shopping cart
         shoppingCartClick();
+        System.out.println("------------ TC 003 finished ------------" + '\n');
+
     }
 
 
@@ -146,7 +156,7 @@ public class OnlineShoppingCart {
         actualText = driver.findElement(By.xpath("//*[@id=\"header_container\"]/div[2]/span")).getText();
 
         if (expectedText.equals(actualText)) {
-            System.out.println("Customer is in the Your cart page successful");
+            System.out.println("Verified the customer is in the " + expectedText +" Page");
         } else {
             System.out.println("Unsuccessful page navigation");
         }
@@ -156,20 +166,24 @@ public class OnlineShoppingCart {
         actualText = driver.findElement(By.xpath("//*[@id=\"cart_contents_container\"]/div/div[1]/div[3]/div[1]")).getText();
 
         if (expectedText.equals(actualText)) {
-            System.out.println("Item count selection successful");
+            System.out.println("Correct item count display successful");
         } else {
-            System.out.println("Item count selection unsuccessful");
+            System.out.println("Item count display unsuccessful");
         }
+        Thread.sleep(3000);
 
-        //Check the currency method
-        expectedText = "$";
-        actualText = driver.findElement(By.xpath("//*[@id=\"cart_contents_container\"]/div/div[1]/div[3]/div[2]/div[2]/div/text()[1]")).getText();
+        //Check the currency element
+        // Locate the price element (modify the selector as needed)
+        WebElement priceElement = driver.findElement(By.xpath("//*[@id=\"cart_contents_container\"]/div/div[1]/div[3]/div[2]/div[2]/div"));
 
-        if (expectedText.equals(actualText)) {
-            System.out.println("Item currency method display successful");
-        } else {
-            System.out.println("Incorrect currency method display");
-        }
+        // Get the text of the price element
+        String priceText = priceElement.getText();
+
+        // Verify that the price contains a dollar sign
+        Assert.assertTrue(priceText.contains("$"), "Price does not contain a dollar sign: " + priceText);
+
+        System.out.println("Price contains a dollar sign.");
+        Thread.sleep(3000);
     }
 
     public void checkoutButtonClick() throws InterruptedException {
