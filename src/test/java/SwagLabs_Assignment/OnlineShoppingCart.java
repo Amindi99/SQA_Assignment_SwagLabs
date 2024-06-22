@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
 public class OnlineShoppingCart {
 
@@ -15,19 +16,64 @@ public class OnlineShoppingCart {
     String expectedText;
     Boolean status;
 
-    //Before test section
+    //------------Before test section
     @BeforeTest
     public void BeforeTestMethod() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
     }
 
-    //Test case section
+    //-----------Test case section
+
+    //Test case - Add item to cart (TC: 001)
+    @Test(priority = 1)
+    public void landingToProductPage() throws Exception {
+        System.out.println("--------------------------------");
+        System.out.println("             TC 001             ");
+        System.out.println("--------------------------------" + '\n');
+
+        //Login to the system
+        customerLogin();
+        System.out.println("Customer login to the SwagLabs success");
+
+        //Verify the landing page is product page
+        expectedText = "Products";
+        actualText = driver.findElement(By.xpath("//*[@id=\"header_container\"]/div[2]/span")).getText();
+
+        if (expectedText.equals(actualText)) {
+            System.out.println("Verified the customer is in the " + expectedText + " Page");
+        } else {
+            System.out.println("Unsuccessful landing page" + '\n');
+        }
+
+        //Click menu item
+        menuItemClick();
+        System.out.println("Menu item clicked and closed successfully");
+        System.out.println("------------ TC 001 finished ------------" + '\n');
+    }
 
 
-    //After test section
+    //Test case - Add item to cart and remove the added item (TC: 002)
+    @Test(priority = 2)
+    public void addItem_RemoveItem() throws Exception {
+        System.out.println("------------ TC 002 ------------" + '\n');
+
+        //Add item to cart and remove the added item
+        addToCart_RemoveClick();
+
+    }
+
+    @Test(priority = 3)
+    public void viewTheCart() throws Exception {
+
+        //View the shopping cart
+        shoppingCartClick();
+    }
+
+
+    //----------After test section
     @AfterTest
-    public void AfterTestMethod(){
+    public void AfterTestMethod() {
 
     }
 
@@ -40,8 +86,10 @@ public class OnlineShoppingCart {
 
         //Get element name for userName and send values
         driver.findElement(By.name("user-name")).sendKeys("standard_user");
+        Thread.sleep(2000);
         //Get element name for password and send values
         driver.findElement(By.name("password")).sendKeys("secret_sauce");
+        Thread.sleep(2000);
         //Get element name for submitButton and send values
         driver.findElement(By.name("login-button")).click();
 
@@ -52,32 +100,39 @@ public class OnlineShoppingCart {
 
         //Click menu item
         driver.findElement(By.xpath("//*[@id=\"react-burger-menu-btn\"]")).click();
-        Thread.sleep(3000);
+        Thread.sleep(2000);
 
         //Close the menu item
         driver.findElement(By.xpath("//*[@id=\"react-burger-cross-btn\"]")).click();
-        Thread.sleep(3000);
+        Thread.sleep(2000);
 
-        //Verify the landing page is product page
-        expectedText = "Products";
-        actualText = driver.findElement(By.xpath("//*[@id=\"header_container\"]/div[2]/span")).getText();
-
-        if (expectedText.equals(actualText)) {
-            System.out.println("Customer is in the Product page successfully");
-        } else {
-            System.out.println("Unsuccessful landing page");
-        }
+//        //Verify the landing page is product page
+//        expectedText = "Products";
+//        actualText = driver.findElement(By.xpath("//*[@id=\"header_container\"]/div[2]/span")).getText();
+//
+//        if (expectedText.equals(actualText)) {
+//            System.out.println("Customer is in the Product page successfully");
+//        } else {
+//            System.out.println("Unsuccessful landing page");
+//        }
     }
 
     public void addToCart_RemoveClick() throws InterruptedException {
 
         // Add item to cart
         driver.findElement(By.xpath("//*[@id=\"add-to-cart-sauce-labs-backpack\"]")).click();
-        Thread.sleep(3000);
+        Thread.sleep(2000);
+        System.out.println("Item added to the cart");
 
         // Remove item from the cart
         driver.findElement(By.xpath("//*[@id=\"remove-sauce-labs-backpack\"]")).click();
-        Thread.sleep(3000);
+        Thread.sleep(2000);
+        System.out.println("Item removed from the cart");
+
+        // Again add item to cart
+        driver.findElement(By.xpath("//*[@id=\"add-to-cart-sauce-labs-backpack\"]")).click();
+        Thread.sleep(2000);
+        System.out.println("Again item added to the cart");
     }
 
     public void shoppingCartClick() throws InterruptedException {
