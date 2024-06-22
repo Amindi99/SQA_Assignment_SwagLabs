@@ -131,7 +131,7 @@ public class OnlineShoppingCart {
 
         //Calling the SwagLabs login page
         driver.get(BaseURL);
-        Thread.sleep(3000);
+        Thread.sleep(2000);
 
         //Get element name for userName and send values
         driver.findElement(By.name("user-name")).sendKeys("standard_user");
@@ -141,8 +141,7 @@ public class OnlineShoppingCart {
         Thread.sleep(2000);
         //Get element name for submitButton and send values
         driver.findElement(By.name("login-button")).click();
-
-        Thread.sleep(3000);
+        Thread.sleep(2000);
     }
 
     public void menuItemClick() throws InterruptedException {
@@ -178,7 +177,7 @@ public class OnlineShoppingCart {
 
         //Click on shopping cart icon
         driver.findElement(By.xpath("//*[@id=\"shopping_cart_container\"]/a")).click();
-        Thread.sleep(5000);
+        Thread.sleep(2000);
 
         //Verify that navigate to correct Your cart page
         expectedText = "Your Cart";
@@ -219,7 +218,7 @@ public class OnlineShoppingCart {
 
         //click the checkout button
         driver.findElement(By.xpath("//*[@id=\"checkout\"]")).click();
-        Thread.sleep(3000);
+        Thread.sleep(2000);
 
         //Verify that navigate to Checkout: Your Information page
         expectedText = "Checkout: Your Information";
@@ -319,9 +318,6 @@ public class OnlineShoppingCart {
         System.out.println("Implement total calculation");
 
 
-
-
-
         //--------------------------------------------------------------------------------------------------------------
 
     }
@@ -330,7 +326,7 @@ public class OnlineShoppingCart {
 
         //click the finish button
         driver.findElement(By.xpath("//*[@id=\"finish\"]")).click();
-        Thread.sleep(5000);
+        Thread.sleep(2000);
 
         //Verify that navigate to Checkout: Complete! page
         expectedText = "Checkout: Complete!";
@@ -366,7 +362,7 @@ public class OnlineShoppingCart {
         } else {
             System.out.println("Unsuccessful navigate to Product page");
         }
-
+        Thread.sleep(2000);
     }
 }
 
