@@ -9,6 +9,8 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.util.List;
+
 public class OnlineShoppingCart {
 
     //Global variable section
@@ -16,7 +18,6 @@ public class OnlineShoppingCart {
     WebDriver driver;
     String actualText;
     String expectedText;
-    Boolean status;
 
     //------------Before test section
     @BeforeTest
@@ -100,7 +101,7 @@ public class OnlineShoppingCart {
 
     //Test case - Validate order details (TC: 005)
     @Test(priority = 5)
-    public void validateOrderDetails() throws Exception {
+    public void validateAndPlaceOrder() throws Exception {
         System.out.println("--------------------------------");
         System.out.println("             TC 005             ");
         System.out.println("--------------------------------");
@@ -201,13 +202,12 @@ public class OnlineShoppingCart {
         Thread.sleep(3000);
 
         //Check the currency element
-        // Locate the price element (modify the selector as needed)
+        // Locate the price element
         WebElement priceElement = driver.findElement(By.xpath("//*[@id=\"cart_contents_container\"]/div/div[1]/div[3]/div[2]/div[2]/div"));
 
-        // Get the text of the price element
         String priceText = priceElement.getText();
 
-        // Verify that the price contains a dollar sign
+        // Check the price contains $ mark
         Assert.assertTrue(priceText.contains("$"), "Price does not contain a dollar sign: " + priceText);
 
         System.out.println("Price contains a dollar($) sign.");
@@ -238,6 +238,7 @@ public class OnlineShoppingCart {
         driver.findElement(By.name("firstName")).sendKeys("Amindi");
         //Click continue button
         driver.findElement(By.name("continue")).click();
+        System.out.println("1. First name added successfully");
         System.out.println("Error: Last Name is required");
         Thread.sleep(2000);
 
@@ -246,6 +247,7 @@ public class OnlineShoppingCart {
         driver.findElement(By.name("lastName")).sendKeys("Perera");
         //Click continue button
         driver.findElement(By.name("continue")).click();
+        System.out.println("2. First name and last name added successfully");
         System.out.println("Error: Postal Code is required");
         Thread.sleep(2000);
 
@@ -254,6 +256,7 @@ public class OnlineShoppingCart {
         driver.findElement(By.name("postalCode")).sendKeys("11010");
         //Click continue button
         driver.findElement(By.name("continue")).click();
+        System.out.println("3. First name, Last name, Postal code added successfully");
         System.out.println("Checkout information entered successfully");
         Thread.sleep(2000);
 
@@ -317,10 +320,9 @@ public class OnlineShoppingCart {
         //Verify total amount calculation
         System.out.println("Implement total calculation");
 
-
-        //--------------------------------------------------------------------------------------------------------------
-
+        
     }
+        //-------------------------------------------------------------------------------------------------------------
 
     public void finishButtonClick() throws InterruptedException {
 

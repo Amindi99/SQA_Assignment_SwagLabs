@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c6be5db7-3d43-4b43-adae-8dd87438748c" name="Changes" comment="Completed">
+    <list default="true" id="c6be5db7-3d43-4b43-adae-8dd87438748c" name="Changes" comment="Updated threat time">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/SwagLabs_Assignment/OnlineShoppingCart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SwagLabs_Assignment/OnlineShoppingCart.java" afterDir="false" />
     </list>
@@ -23,9 +23,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2iDkYBtQEo7bX2jtZKdI0sD60ck" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -41,9 +41,17 @@
     "TestNG.OnlineShoppingCart.viewTheCart.executor": "Debug",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "onboarding.tips.debug.path": "C:/Users/ASUS/OneDrive/Desktop/SQA_Assignment/src/main/java/org/example/Main.java"
+    "onboarding.tips.debug.path": "C:/Users/ASUS/OneDrive/Desktop/SQA_Assignment/src/main/java/org/example/Main.java",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default"
   }
 }]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -125,7 +133,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719065113742</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Updated threat time">
+      <option name="closed" value="true" />
+      <created>1719065514490</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1719065514490</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -149,7 +165,8 @@
     <MESSAGE value="Upto test case 5 done" />
     <MESSAGE value="All test cases completed" />
     <MESSAGE value="Completed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Completed" />
+    <MESSAGE value="Updated threat time" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated threat time" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
